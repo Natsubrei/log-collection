@@ -20,7 +20,7 @@ public class Log implements Serializable {
     @JsonProperty("log_level")
     private String logLevel;
 
-    private String Message;
+    private String message;
 
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime timestamp;

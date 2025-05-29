@@ -124,18 +124,18 @@ public class LogAnalyzer {
             List<Log> logs = new ArrayList<>(logBuffer.get(deviceId));
             if (logs.isEmpty()) continue;
 
-            long totalRecent = logs.stream()
+            long recentTotal = logs.stream()
                     .filter(l -> Duration.between(l.getTimestamp(), now).getSeconds() <= S)
                     .count();
 
-            if (totalRecent == 0) continue;
+            if (recentTotal == 0) continue;
 
-            long errorRecent = logs.stream()
+            long recentErrors = logs.stream()
                     .filter(l -> l.getLogLevel().equals("ERROR") &&
                             Duration.between(l.getTimestamp(), now).getSeconds() <= S)
                     .count();
 
-            double ratio = (double) errorRecent / totalRecent;
+            double ratio = (double) recentErrors / recentTotal;
 
             if (ratio > 0.5) {
                 try {

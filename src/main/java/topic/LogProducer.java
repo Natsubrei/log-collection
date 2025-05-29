@@ -19,7 +19,7 @@ public class LogProducer {
         try (Connection connection = connectionFactory.createConnection();
              Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE)) {
 
-            // 创建三个 Topic（只创建一次）
+            // 创建三个Topic
             Topic infoTopic = session.createTopic("LOG_INFO_TOPIC");
             Topic warnTopic = session.createTopic("LOG_WARN_TOPIC");
             Topic errorTopic = session.createTopic("LOG_ERROR_TOPIC");

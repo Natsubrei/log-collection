@@ -68,7 +68,9 @@ public class LogAnalyzer {
         logBuffer.computeIfAbsent(log.getDeviceId(), k -> new LinkedList<>());
         LinkedList<Log> logs = logBuffer.get(log.getDeviceId());
         synchronized (logs) {
-            if (logs.size() >= MAX_LOGS) logs.removeFirst();
+            if (logs.size() >= MAX_LOGS) {
+                logs.removeFirst();
+            }
             logs.addLast(log);
         }
     }
